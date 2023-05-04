@@ -13,7 +13,7 @@ jobs:
     env:
       APP_ID: 2accb6a1a0aa27ca62cf5ccf3515a6ab3e69a552af72b639a599b9a95f884c0b
       BRANCH_NAME: Develop
-      SCAN_ID: af09c8d25184c8233a43d4813c1d04b92670e0649fca0cb5f2581ab1ac6a1121
+      SCAN_ID: d5c107bf950623dcf897a8250db2d26e6f2808c3b134e06f042185cd71255006
       REQ_URL_MAP: "${{toJSON('{\"SL_RESULT_API_HOST\":\"https://slresultapi.qa.securin.io/resultapi\"\
         ,\"SL_RESULTPARSER_API_HOST\":\"https://slresultparserapi.qa.securin.io/resultparserapi\"\
         }')}}"
@@ -40,7 +40,7 @@ jobs:
         \ $usrImgTag -access_tkn ${{secrets.CLI_ACCESS_TOKEN}} -app_id ${{ env.APP_ID\
         \ }} -scan_id ${{ env.SCAN_ID }} -branch_name ${{ env.BRANCH_NAME }} -req_url_map\
         \ ${{ env.REQ_URL_MAP }} -tool_name github event:${{ github.event_name }}\
-        \  pr_number:${{ github.event.number }}"
+        \  pr_number:${{ github.event.number }} -upload_log true"
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
