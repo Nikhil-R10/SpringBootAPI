@@ -13,14 +13,14 @@ jobs:
     env:
       APP_ID: 4125481ee1cd0306617f9fcb96fc82d4e872adc943c6c1aa121f3a2803f7e524
       BRANCH_NAME: DEVELOP
-      SCAN_ID: aa54422d50d57d7f400403225e90a42cfe933247d55428e1ef8356a257871553
-      REQ_URL_MAP: "${{toJSON('{\"SL_RESULT_API_HOST\":\"https://breezy-impalas-cheer.loca.lt/resultapi\"\
-        ,\"SL_RESULTPARSER_API_HOST\":\"https://loose-guests-stay.loca.lt/resultparserapi\"\
+      SCAN_ID: 3537e256655b0f64034cb88d42a3aa566fc308c5fedad537b85e287ce4c605a5
+      REQ_URL_MAP: "${{toJSON('{\"SL_RESULT_API_HOST\":\"https://slresultapi.qa.securin.io/resultapi\"\
+        ,\"SL_RESULTPARSER_API_HOST\":\"https://slresultparserapi.qa.securin.io/resultparserapi\"\
         }')}}"
     steps:
     - name: Retrieve Token Info
       id: auth_token
-      run: "respJson=$(curl --location --request GET 'https://breezy-impalas-cheer.loca.lt/resultapi/aws/ecr/token'\
+      run: "respJson=$(curl --location --request GET 'https://slresultapi.qa.securin.io/resultapi/aws/ecr/token'\
         \  --header 'X-ASPM-Auth-Key: ${{secrets.ORG_API_KEY}}'  --data-raw ' ' )\
         \ \necho \"authTokenJson=$respJson\" >> $GITHUB_OUTPUT"
     - uses: actions/checkout@v3
